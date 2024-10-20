@@ -1,8 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:text_recognition/core/color.dart';
 
-AppBar customAppBar(BuildContext context) {
+AppBar customAppBar({BuildContext? context, String title = ''}) {
   return AppBar(
+    title: Center(
+      child: Text(
+        title,
+        style: const TextStyle(
+            fontSize: 22,
+            fontWeight: FontWeight.w400,
+            color: MyColor.blackColor),
+      ),
+    ),
     backgroundColor: MyColor.whiteColor,
     leading: IconButton(
       icon: const Icon(
@@ -11,7 +20,7 @@ AppBar customAppBar(BuildContext context) {
         color: MyColor.blackColor,
       ),
       onPressed: () {
-        Navigator.pop(context);
+        Navigator.pop(context!);
       },
     ),
   );

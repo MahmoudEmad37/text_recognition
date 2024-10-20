@@ -8,6 +8,7 @@ class MyColor {
   static const greenColor = Colors.green;
   static const splashBackgroundColor = Color(0xffffffff);
   static const grey = Colors.grey;
+  static const blue = Color(0xff456EFE);
 
   static const drawerMenuButtonColor = Color(0xffffffff);
 }

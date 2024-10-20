@@ -2,12 +2,14 @@ import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:text_recognition/core/success_dialog.dart';
 import 'package:text_recognition/widgets/custom_appbar.dart';
+import 'package:text_recognition/core/color.dart';
 
 class DisplayPictureScreen extends StatelessWidget {
   final String imagePath;
   final List<String> data;
-  final List<String> Labels = [
+  final List<String> labels = [
     'Transaction Reference:',
     'Value Date:',
     'Deposited Amount:',
@@ -24,14 +26,14 @@ class DisplayPictureScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: customAppBar(context),
+        appBar: customAppBar(context: context),
         body: Column(children: [
           SizedBox(
-              height: MediaQuery.of(context).size.height / 2,
+              height: MediaQuery.of(context).size.height / 3,
               child: Image.file(File(imagePath))),
           Expanded(
             child: ListView.builder(
-                itemCount: Labels.length,
+                itemCount: labels.length,
                 itemBuilder: (_, index) {
                   return Padding(
                       padding: const EdgeInsets.all(10.0),
@@ -39,7 +41,7 @@ class DisplayPictureScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              Labels[index],
+                              labels[index],
                               textAlign: TextAlign.center,
                               style: const TextStyle(
                                 fontSize: 16.0,
@@ -63,13 +65,32 @@ class DisplayPictureScreen extends StatelessWidget {
                                   ),
                                 ),
                                 controller: TextEditingController(
-                                    text: data.length == index
+                                    text: index >= data.length
                                         ? ''
                                         : data[index]),
                               ),
                             ),
                           ]));
                 }),
+          ),
+          TextButton(
+            style: ElevatedButton.styleFrom(
+              maximumSize: const Size(300, 60),
+              minimumSize: const Size(250, 60),
+              backgroundColor: MyColor.primaryColor,
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
+            ),
+            onPressed: () {
+              successDialog(context);
+            },
+            child: const Text(
+              'Confirm',
+              style: TextStyle(
+                fontSize: 20,
+                color: MyColor.whiteColor,
+              ),
+            ),
           ),
         ]));
   }
