@@ -103,7 +103,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: TextStyle(color: MyColor.grey, fontSize: 17),
                       ),
                     ]),
-
                 const Padding(
                   padding: EdgeInsets.all(8.0),
                   child: Text(
@@ -112,32 +111,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 _outerBannerSlider(),
-                // CarouselSlider(
-                //     carouselController: controller,
-                //     options: CarouselOptions(
-                //       height: 300,
-                //       aspectRatio: 16 / 9,
-                //       viewportFraction: 0.8,
-                //       initialPage: 0,
-
-                //       //enableInfiniteScroll: true,
-                //       reverse: false,
-                //       autoPlay: false,
-                //       // autoPlayInterval: Duration(seconds: 3),
-                //       // autoPlayAnimationDuration: Duration(milliseconds: 800),
-                //       // autoPlayCurve: Curves.fastOutSlowIn,
-                //       //enlargeCenterPage: true,
-                //       scrollDirection: Axis.horizontal,
-                //     ),
-                //     items: [
-                //       lastOrderContainer(),
-                //       lastOrderContainer(),
-                //       lastOrderContainer(),
-                //       lastOrderContainer(),
-                //     ].map<Widget>((item) {
-                //       return item;
-                //     }).toList()),
-
                 Container(
                   margin: const EdgeInsets.fromLTRB(0, 15, 0, 0),
                   child: ElevatedButton(
@@ -243,10 +216,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
           /// Items
           items: [
-            lastOrderContainer(),
-            lastOrderContainer(),
-            lastOrderContainer(),
-            lastOrderContainer(),
+            lastOrderContainer('2287560387', 'Diesel 40,000 L'),
+            lastOrderContainer('2235149852', 'Gasoline 95 30,000 L'),
+            lastOrderContainer('2154695875', 'Gasoil 50,000 L'),
+            lastOrderContainer('2136525484', 'Gasoline 92 40,000 L'),
           ].map((item) {
             return Builder(
               builder: (BuildContext context) {
@@ -294,7 +267,7 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  Widget lastOrderContainer() {
+  Widget lastOrderContainer(String orderNumber, String amount) {
     return Card(
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -311,12 +284,12 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const SizedBox(
+            SizedBox(
               height: 40,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
+                  const Text(
                     'Order Number',
                     style: TextStyle(
                         color: MyColor.grey,
@@ -324,8 +297,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    '2287560387',
-                    style: TextStyle(color: MyColor.blackColor, fontSize: 14),
+                    orderNumber,
+                    style: const TextStyle(
+                        color: MyColor.blackColor, fontSize: 14),
                   ),
                 ],
               ),
@@ -349,7 +323,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   Row(
                     children: [
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        padding: const EdgeInsets.symmetric(horizontal: 10),
                         width: 50,
                         height: 25,
                         child: Image.asset(
@@ -357,10 +331,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           fit: BoxFit.cover,
                         ),
                       ),
-                      const Text(
-                        'Diesel 40,000 L',
-                        style:
-                            TextStyle(color: MyColor.blackColor, fontSize: 14),
+                      Text(
+                        amount,
+                        style: const TextStyle(
+                            color: MyColor.blackColor, fontSize: 14),
                       ),
                     ],
                   ),

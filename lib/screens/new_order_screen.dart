@@ -32,11 +32,20 @@ class _NewOrderScreenState extends State<NewOrderScreen> {
                   style: TextStyle(color: MyColor.blackColor, fontSize: 30),
                 ),
                 const SizedBox(height: 25),
-                const Text(
-                  'Minimum Quantity:10M3',
-                  style: TextStyle(color: MyColor.blackColor, fontSize: 13),
+                Container(
+                  width: 300,
+                  alignment: Alignment.centerLeft,
+                  decoration: BoxDecoration(
+                    color: MyColor.primaryColor[100],
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  padding: EdgeInsets.all(8),
+                  child: const Text(
+                    'Minimum Quantity : 10M3',
+                    style: TextStyle(color: MyColor.blackColor, fontSize: 13),
+                  ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 25,
                 ),
                 Table(
@@ -90,8 +99,9 @@ class _NewOrderScreenState extends State<NewOrderScreen> {
     return TableRow(children: [
       Text(code),
       Text(
-        'product',
+        product,
         maxLines: 1,
+        style: const TextStyle(fontSize: 12),
       ),
       Container(
         padding: EdgeInsets.symmetric(horizontal: 10),
@@ -105,7 +115,7 @@ class _NewOrderScreenState extends State<NewOrderScreen> {
       Container(
         width: 30,
         height: 30,
-        padding: EdgeInsets.symmetric(horizontal: 5),
+        padding: const EdgeInsets.symmetric(horizontal: 5),
         decoration: BoxDecoration(
           color: MyColor.grey[300],
           borderRadius: BorderRadius.circular(10),
