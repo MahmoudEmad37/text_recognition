@@ -4,8 +4,6 @@ import 'package:text_recognition/screens/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // final cameras = await availableCameras();
-  // final firstCamera = cameras.first;
 
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,

@@ -35,18 +35,14 @@ dependencies:
     sdk: flutter
   google_mlkit_text_recognition: ^0.14.0
   http: ^0.13.3
+  image: 3.0.8
   image_picker: ^1.1.2
   path: ^1.9.0
   path_provider: ^2.1.4
+  progress_dialog_null_safe: ^3.0.0
   requests: ^4.4.1
 
 dev_dependencies:
-
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter

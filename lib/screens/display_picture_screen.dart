@@ -14,7 +14,6 @@ class DisplayPictureScreen extends StatelessWidget {
     'Value Date:',
     'Deposited Amount:',
     'Amount in words:',
-    'Net Deposited Amount:',
     'Account Name:',
     'Account No:',
     'Account Currency:'

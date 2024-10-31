@@ -64,4 +64,6 @@ flutter {
     source '../..'
 }
 
-dependencies {}
+dependencies {
+    api 'com.google.android.gms:play-services-mlkit-text-recognition:16.2.0'
+}
