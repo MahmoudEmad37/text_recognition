@@ -1,13 +1,11 @@
-import 'package:camera/camera.dart';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:text_recognition/core/color.dart';
-import 'package:text_recognition/screens/cameraScreen.dart';
+import 'package:text_recognition/screens/bank_search_screen.dart';
 import 'package:text_recognition/screens/new_order_screen.dart';
 import 'package:text_recognition/screens/notification_screen.dart';
-import 'package:text_recognition/widgets/custom_appbar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -124,7 +122,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => NewOrderScreen()));
+                              builder: (context) => const NewOrderScreen()));
                     },
                     child: const Text(
                       'Submit new Order',
@@ -144,15 +142,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.all(Radius.circular(10))),
                     ),
-                    onPressed: () async {
-                      WidgetsFlutterBinding.ensureInitialized();
-                      final cameras = await availableCameras();
-                      final firstCamera = cameras.first;
+                    onPressed: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) =>
-                                  CameraScreen(camera: firstCamera)));
+                              builder: (context) => BankSearchScreen()));
                     },
                     child: const Text(
                       'Submit new Payment',

@@ -4,7 +4,7 @@ import 'package:text_recognition/core/color.dart';
 import 'package:text_recognition/screens/home_screen.dart';
 
 class LoginScreen extends StatefulWidget {
-  LoginScreen({super.key});
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -55,9 +55,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     height: 2.5, fontSize: 16, color: MyColor.blackColor),
                 decoration: InputDecoration(
                   labelText: "Mobile Number",
-                  labelStyle: TextStyle(color: MyColor.blackColor),
+                  labelStyle: const TextStyle(color: MyColor.blackColor),
                   contentPadding:
-                      EdgeInsets.symmetric(vertical: 6, horizontal: 3),
+                      const EdgeInsets.symmetric(vertical: 6, horizontal: 3),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: const BorderSide(
@@ -97,7 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     },
                   ),
                   contentPadding:
-                      EdgeInsets.symmetric(vertical: 6, horizontal: 3),
+                      const EdgeInsets.symmetric(vertical: 6, horizontal: 3),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(10),
                     borderSide: const BorderSide(
@@ -130,8 +130,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   // if (phoneController.text == '12345' &&
                   //     passwordController.text == '12345')
                   //     {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => HomeScreen()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const HomeScreen()));
                   // }
                 },
                 child: const Text(

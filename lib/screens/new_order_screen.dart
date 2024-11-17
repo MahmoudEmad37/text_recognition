@@ -1,10 +1,8 @@
-import 'package:camera/camera.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:text_recognition/core/color.dart';
-import 'package:text_recognition/core/success_dialog.dart';
 import 'package:text_recognition/screens/invoice_screen.dart';
 import 'package:text_recognition/widgets/custom_appbar.dart';
 

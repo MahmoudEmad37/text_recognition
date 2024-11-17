@@ -1,7 +1,5 @@
 import 'dart:io';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:text_recognition/core/success_dialog.dart';
 import 'package:text_recognition/widgets/custom_appbar.dart';
 import 'package:text_recognition/core/color.dart';
@@ -10,6 +8,7 @@ class DisplayPictureScreen extends StatelessWidget {
   final String imagePath;
   final List<String> data;
   final List<String> labels = [
+    'Bank Name: ',
     'Transaction Reference:',
     'Value Date:',
     'Deposited Amount:',
