@@ -1,11 +1,11 @@
 buildscript {
-    ext.kotlin_version = "1.8.21" // Set this to 1.5.20 or higher
+    ext.kotlin_version = "1.7.10" // Set this to 1.5.20 or higher
     repositories {
         google()
         mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:8.1.0" // Use compatible AGP version
+        classpath "com.android.tools.build:gradle:7.0.4" // Use a compatible Gradle version
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 
         

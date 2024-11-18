@@ -7,6 +7,7 @@ import 'package:google_mlkit_text_recognition/google_mlkit_text_recognition.dart
 import 'package:permission_handler/permission_handler.dart';
 import 'package:text_recognition/core/color.dart';
 import 'package:text_recognition/core/progressbar.dart';
+import 'package:text_recognition/screens/display_pdf_screen.dart';
 import 'package:text_recognition/screens/display_picture_screen.dart';
 import 'package:image/image.dart' as img;
 import 'package:edge_detection/edge_detection.dart';
@@ -16,8 +17,8 @@ import 'package:text_recognition/widgets/custom_appbar.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:syncfusion_flutter_pdf/pdf.dart' as pdf;
 
-class CameraScreen extends StatefulWidget {
-  const CameraScreen({
+class PickupDataScreen extends StatefulWidget {
+  const PickupDataScreen({
     super.key,
     required this.camera,
   });
@@ -25,10 +26,10 @@ class CameraScreen extends StatefulWidget {
   final CameraDescription camera;
 
   @override
-  CameraScreenState createState() => CameraScreenState();
+  PickupDataScreenState createState() => PickupDataScreenState();
 }
 
-class CameraScreenState extends State<CameraScreen> {
+class PickupDataScreenState extends State<PickupDataScreen> {
   late CameraController _controller;
   // late Future<void> _initializeControllerFuture;
   XFile? image;
@@ -104,11 +105,17 @@ class CameraScreenState extends State<CameraScreen> {
                   Icons.picture_as_pdf, () async {
                 setState(() async {
                   pdfText = await extractTextFromPDF();
+                  //print(pdfText);
+                  List<String> data = extractSpecificTextFromPDF(pdfText);
+                  await Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) => DisplayPdfScreen(
+                        data: data,
+                      ),
+                    ),
+                  );
                 });
               }),
-              Text(
-                pdfText,
-              ),
             ],
           ),
         ),
@@ -352,12 +359,9 @@ class CameraScreenState extends State<CameraScreen> {
     if (result != null && result.files.single.path != null) {
       File pdfFile = File(result.files.single.path!);
       try {
-        // Load the PDF document
         pdf.PdfDocument document =
             pdf.PdfDocument(inputBytes: pdfFile.readAsBytesSync());
-        // Extract text from all pages
         String extractedText = pdf.PdfTextExtractor(document).extractText();
-        // Dispose the document
         document.dispose();
         return extractedText;
       } catch (e) {
@@ -366,6 +370,30 @@ class CameraScreenState extends State<CameraScreen> {
     } else {
       return '';
     }
+  }
+
+  List<String> extractSpecificTextFromPDF(String pdfText) {
+    final List<String> labels = [
+      'TransferFrom:',
+      'Description:',
+      'Bank:',
+      'Name:',
+      'Account:',
+      'BankName:',
+      'Amount:',
+    ];
+    pdfText = pdfText.substring(3);
+    List<String> pdfList = pdfText.split('\n');
+    List<String> data = [];
+
+    for (int i = 0; i < pdfList.length - 1; i++) {
+      if (labels.contains(pdfList[i].trim()) &&
+          i != (pdfList.length - 2) &&
+          pdfList[i + 1].isNotEmpty) {
+        data.add(pdfList[i + 1]);
+      }
+    }
+    return data;
   }
 
   Future pickImage(BuildContext context, bool isCamera) async {

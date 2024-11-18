@@ -1,7 +1,7 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:text_recognition/core/color.dart';
-import 'package:text_recognition/screens/cameraScreen.dart';
+import 'package:text_recognition/screens/pickup_data_screen.dart';
 import 'package:text_recognition/screens/map_screen.dart';
 import 'package:text_recognition/widgets/custom_appbar.dart';
 
@@ -78,7 +78,7 @@ class NotificationScreen extends StatelessWidget {
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                    CameraScreen(camera: firstCamera)));
+                                    PickupDataScreen(camera: firstCamera)));
                       },
                       child: Container(
                         alignment: Alignment.center,

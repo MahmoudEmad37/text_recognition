@@ -2,7 +2,7 @@ import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
 import 'package:text_recognition/core/color.dart';
 import 'package:text_recognition/dummy_data/bank_data.dart';
-import 'package:text_recognition/screens/cameraScreen.dart';
+import 'package:text_recognition/screens/pickup_data_screen.dart';
 
 class BankSearchScreen extends StatefulWidget {
   @override
@@ -133,7 +133,7 @@ class _BankSearchScreenState extends State<BankSearchScreen> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            CameraScreen(camera: firstCamera)));
+                            PickupDataScreen(camera: firstCamera)));
               },
               child: const Text(
                 'Choose The Bank',
